@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head th:substituteby="fragments/headTag :: headTag">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>v-Fashion</title>
+
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/vFashion.css"
+	th:href="@{/resources/css/vFashion.css}" rel="stylesheet" />
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
+	rel="stylesheet"></link>
+</head>
+
+<body>
+	<div class="container">
+		<div th:include="fragments/bodyHeader" th:remove="tag">
+
+
+			<div class="banner"></div>
+
+			<div class="navbar">
+				<div class="navbar-inner">
+					<h1>V-Fashion</h1>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<form th:object="${user}" action="#"
+			th:action="@{'/owners/login1.html'}" method="get" class="form-horizontal"
+			id="login-form">
+			<fieldset>
+				<legend>Login</legend>
+				<div class="control-group" id="username">
+					<label class="control-label">user name </label> <input type="text"
+						th:field="*{username}" size="30" maxlength="80" /> <span
+						class="help-inline" th:errors="*{username}"></span>
+				</div>
+				<div class="control-group" id="password">
+					<label class="control-label">password </label> <input type="text"
+						th:field="*{password}" size="30" maxlength="80" /> <span
+						class="help-inline" th:errors="*{password}"></span>
+				</div>
+				<div class="form-actions">
+					<button type="submit">Sign In</button>
+				</div>
+			</fieldset>
+		</form>
+	
+	</div>
+</body>
+
+</html>

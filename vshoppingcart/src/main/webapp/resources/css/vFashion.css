@@ -1,0 +1,24 @@
+
+
+.form-horizontal {
+	width: 100%;
+}
+
+input[type="text"] {
+	height: 25px;
+}
+
+.navbar .nav>li>a {
+	color: #000000;
+}
+
+.form-horizontal .control-label {
+	text-align: left;
+}
+
+.banner {
+	height: 110px;
+	/*background-image: url(http://www.ogmda.com/test/img/banner2.png);*/
+	background-image: url('../images/shoppingcart_banner.jpg');
+	background-repeat: repeat-x;
+}
