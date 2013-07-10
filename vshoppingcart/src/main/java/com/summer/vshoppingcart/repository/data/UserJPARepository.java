@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface UserJPARepository extends UserRepository, Repository<User, Integer> {
 
-	List<User> findByUserName(String username);
+	//List<User> findByUserName(String username);
 
 }

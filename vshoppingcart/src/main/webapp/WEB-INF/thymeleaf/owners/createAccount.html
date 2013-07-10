@@ -1,0 +1,144 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:substituteby="fragments/headTag :: headTag">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>v-Fashion</title>
+
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/vFashion.css"
+	th:href="@{/resources/css/vFashion.css}" rel="stylesheet" />
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
+	rel="stylesheet"></link>
+
+</head>
+
+<body>
+	<div class="container">
+		<div th:include="fragments/bodyHeader" th:remove="tag">
+			<div class="banner"></div>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<h1>V-Fashion</h1>
+				</div>
+			</div>
+		</div>
+
+
+		<!--         <img th:src="@{/resources/images/banner-graphic.png}" 
+            src="../../../resources/images/banner-graphic.png"/> -->
+
+		<!-- <div class="navbar" style="width: 601px;">
+				<div class="navbar-inner">
+					<ul class="nav">
+						<li style="width: 100px;"><a href="../welcome.html"
+							th:href="@{/}"><i class="icon-home"></i>Home</a></li>
+						<li style="width: 130px;"><a href="../owners/findOwners.html"
+							th:href="@{/owners/find.html}"><i class="icon-search"></i>Find
+								owners</a></li>
+						<li style="width: 140px;"><a href="../vets/vetList.html"
+							th:href="@{/vets.html}"><i class="icon-th-list"></i>Veterinarians</a></li>
+						<li style="width: 90px;"><a href="../exception.html"
+							th:href="@{/oups.html}"
+							title="trigger a RuntimeException to see how it is handled"><i
+								class="icon-warning-sign"></i>Error</a></li>
+						<li style="width: 80px;"><a href="#"
+							title="not available yet. Work in progress!!"><i
+								class=" icon-question-sign"></i>Help</a></li>
+					</ul>
+				</div>
+			</div> -->
+
+
+
+		<form th:object="${user}"
+			th:method="post"
+			action="/user/new"
+			th:action="@{${#httpServletRequest.servletPath}}"
+			class="form-horizontal" id="add-owner-form">
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('firstName')} ? 'error' : ''">
+				<label class="control-label">First Name</label>
+				<div class="controls">
+					<input type="text" th:field="*{firstName}" /> <span
+						class="help-inline" th:errors="*{firstName}">[error]</span>
+				</div>
+			</div>
+
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('lastName')} ? 'error' : ''">
+				<label class="control-label">Last Name</label>
+				<div class="controls">
+					<input type="text" th:field="*{lastName}" /> <span
+						class="help-inline" th:errors="*{lastName}">[error]</span>
+				</div>
+			</div>
+
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('username')} ? 'error' : ''">
+				<label class="control-label">Username</label>
+				<div class="controls">
+					<input type="text" th:field="*{username}" /> <span class="help-inline"
+						th:errors="*{username}">[error]</span>
+				</div>
+			</div>
+			
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('password')} ? 'error' : ''">
+				<label class="control-label">Password</label>
+				<div class="controls">
+					<input type="text" th:field="*{password}" /> <span
+						class="help-inline" th:errors="*{password}">[error]</span>
+				</div>
+			</div>
+
+
+
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('email')} ? 'error' : ''">
+				<label class="control-label">Email</label>
+				<div class="controls">
+					<input type="text" th:field="*{email}" /> <span
+						class="help-inline" th:errors="*{email}">[error]</span>
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<!-- <button th:if="${owner['new']}" type="submit">Create Account</button> -->
+				<a th:href="@{${owner.lastName} + '/owners/index.html'}" href="../owners/index.html"  class="btn btn-success">Create Account</a></td>
+				<!-- <button th:unless="${owner['new']}" type="submit">Update
+					Owner</button> -->
+			</div>
+		</form>
+
+		<table th:substituteby="fragments/footer :: footer" class="footer">
+			<tr>
+				<td></td>
+				<td align="right">
+					<p class="powered-text">
+						Copyright <a href="#"> V-Fashion</a> 2013 designed by Summer corp</a>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+</body>
+
+</html>

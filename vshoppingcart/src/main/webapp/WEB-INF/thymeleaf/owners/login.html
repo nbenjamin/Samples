@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 
 <head th:substituteby="fragments/headTag :: headTag">
@@ -45,8 +44,8 @@
 
 
 		<form th:object="${user}" action="#"
-			th:action="@{'/owners/login1.html'}" method="get" class="form-horizontal"
-			id="login-form">
+			th:action="@{'/owners/login1.html'}" method="get"
+			class="form-horizontal" id="login-form">
 			<fieldset>
 				<legend>Login</legend>
 				<div class="control-group" id="username">
@@ -62,10 +61,25 @@
 				<div class="form-actions">
 					<button type="submit">Sign In</button>
 				</div>
+				
+				<div class="form-actions">
+					<a href="../owners/createAccount.html" th:href="@{/owners/createAccount.html}">Create an account</a>
+				</div>
 			</fieldset>
+
 		</form>
-	
+		<table th:fragment="footer" class="footer">
+			<tr>
+				<td></td>
+				<td align="right">
+					<p class="powered-text">
+						Copyright <a href="#"> V-Fashion</a> 2013 designed by Summer corp
+					</p>
+				</td>
+			</tr>
+		</table>
 	</div>
+
 </body>
 
 </html>

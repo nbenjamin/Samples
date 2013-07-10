@@ -17,6 +17,7 @@
 		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
 		<!-- Thymeleaf -->
 		<thymeleaf.version>2.0.17</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>1.1.1</thymeleaf-layout-dialect.version>
 		<!-- Web dependencies -->
 		<webjars-bootstrap.version>2.3.0</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.9.2</webjars-jquery-ui.version>
@@ -67,6 +68,11 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring3</artifactId>
 			<version>${thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		<!-- Webjars (static dependencies distributed as JAR files) -->
 		<dependency>

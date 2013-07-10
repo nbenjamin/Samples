@@ -24,4 +24,10 @@ public class LoginController {
 		System.out.println(user);
 		return "index";
 	}
+	
+	@RequestMapping(value = "/user/new", method = RequestMethod.POST)
+	public String createAccount(User user, BindingResult result, Model model) {
+		System.out.println(user);
+		return "index";
+	}
 }
