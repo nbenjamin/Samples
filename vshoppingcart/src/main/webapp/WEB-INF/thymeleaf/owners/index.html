@@ -1,37 +1,39 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 
 
 <head th:substituteby="fragments/headTag :: headTag">
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>V-Fashion</title>
 
 <link
 	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
 	rel="stylesheet" />
-<link href="../../../resources/css/vFashion.css"
-	th:href="@{/resources/css/vFashion.css}" rel="stylesheet" />
-
+<link href="../../../resources/css/vfashion.css"
+	th:href="@{/resources/css/vfashion.css}" rel="stylesheet" />
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/bootstrap.css"
+	th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+<link href="../../../resources/css/bootstrap-responsive.css"
+	th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
 	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
 	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
-
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
 	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
 	rel="stylesheet"></link>
-
-<link href="../../../resources/css/bootstrap.css"
-	th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
-<link href="../../../resources/css/bootstrap-responsive.css"
-	th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet" />
 <!-- <link href="../../../resources/css/style.css"
 	th:href="@{/resources/css/style.css}" rel="stylesheet" />
 <link href="../../../resources/css/flexslider.css"
@@ -40,19 +42,15 @@
 </head>
 <body>
 	<div class="container header">
+		<div class="banner"></div>
 		<div class="row">
-			<div class="span7">
-				<div class="logo">
-					<a href="index-2.html">V- Fashion</a>
-				</div>
-			</div>
-			<div class="span5">
+			<!-- <div class="span5">
 				<div id="search">
-					<input type="text" placeholder="Search" name="filter_name">
+					<input type="text" placeholder="Search" name="filter_name" />
 					<div class="button-search"></div>
 				</div>
 
-			</div>
+			</div> -->
 		</div>
 
 		<div class="container menu">
@@ -65,9 +63,15 @@
 								<li><a href="checkout.html">Checkout</a></li>
 								<li><a href="about.html">About Us</a></li>
 								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../products/AddProducts.html" th:href="@{/products/addnew.html}">Add Products</a></li>
 							</ul>
+							 <div id="search">
+								<input type="text" placeholder="Search" name="filter_name" />
+								<div class="button-search"></div>
+							 </div> 
 						</div>
 						<!-- /navbar-inner -->
+
 					</div>
 					<!-- /navbar -->
 				</div>
@@ -79,7 +83,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="span12">
-					<a href="#"> <img src="image/MainImage.jpg" width="100%"
+					<a href="#"> <img src="../../../resources/image/MainImage.jpg"
+						th:src="@{/resources/image/MainImage.jpg}" width="100%"
 						alt="Banner 1" />
 					</a>
 				</div>
@@ -96,8 +101,10 @@
 				<div class="span3">
 					<div class="product">
 						<div class="product_sale">Sale</div>
-						<a href="product.html"><img alt="dress1home"
-							src="products/dress1home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}">
+						<img alt="dress1home"
+							src="../../../resources/products/dress1home.jpg"
+							th:src="@{/resources/products/dress1home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Elegant Dress</a>
 						</div>
@@ -108,8 +115,9 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="product.html"><img alt="dres2"
-							src="products/dress5home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dres2"
+							src="../../../resources/products/dress5home.jpg"
+							th:src="@{/resources/products/dress5home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Lace Dress</a>
 						</div>
@@ -122,8 +130,9 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="product.html"><img alt="dress3"
-							src="products/dress6home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress3"
+							src="../../../resources/products/dress6home.jpg"
+							th:src="@{/resources/products/dress6home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Floral Dress</a>
 						</div>
@@ -134,8 +143,9 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="product.html"><img alt="dress4"
-							src="products/dress2home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress4"
+							src="../../../resources/products/dress2home.jpg"
+							th:src="@{/resources/products/dress2home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Black Dress</a>
 						</div>
@@ -158,8 +168,9 @@
 				<div class="span3">
 					<div class="product">
 						<div class="product_sale">Sale</div>
-						<a href="product.html"><img alt="dress5"
-							src="products/dress3home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress5"
+							src="../../../resources/products/dress3home.jpg"
+							th:src="@{/resources/products/dress3home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Midi Dress</a>
 						</div>
@@ -171,8 +182,9 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="product.html"><img alt="dress6"
-							src="products/dress4home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress6"
+							src="../../../resources/products/dress4home.jpg"
+							th:src="@{/resources/products/dress4home.jpg}" /></a>
 						<div class="name">
 							<a href="#">White Dress</a>
 						</div>
@@ -185,8 +197,9 @@
 				<div class="span3">
 					<div class="product">
 						<div class="product_sale">Sale</div>
-						<a href="product.html"><img alt="dress7"
-							src="products/dress7home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress7"
+							src="../../../resources/products/dress7home.jpg"
+							th:src="@{/resources/products/dress7home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Red Dress</a>
 						</div>
@@ -198,8 +211,9 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="product.html"><img alt="dress8"
-							src="products/dress8home.jpg"></a>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress8"
+							src="../../../resources/products/dress8home.jpg"
+							th:src="@{/resources/products/dress8home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Evening Dress</a>
 						</div>

@@ -22,9 +22,17 @@
 		<webjars-bootstrap.version>2.3.0</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.9.2</webjars-jquery-ui.version>
 		<webjars-jquery.version>1.9.0</webjars-jquery.version>
-
+		<querydsl.version>2.9.0</querydsl.version>
+		<commons-fileupload.version>1.3</commons-fileupload.version>
 	</properties>
 	<dependencies>
+		<!-- Apache dependency -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+
 		<!-- Spring dependency -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -50,6 +58,16 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring-data-jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-mongodb</artifactId>
+			<version>${querydsl.version}</version>
 		</dependency>
 		<!-- Junit -->
 		<dependency>

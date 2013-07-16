@@ -1,6 +1,7 @@
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 
 
 <head th:substituteby="fragments/headTag :: headTag">
@@ -39,53 +40,26 @@
 			</div>
 		</div>
 
-
-		<!--         <img th:src="@{/resources/images/banner-graphic.png}" 
-            src="../../../resources/images/banner-graphic.png"/> -->
-
-		<!-- <div class="navbar" style="width: 601px;">
-				<div class="navbar-inner">
-					<ul class="nav">
-						<li style="width: 100px;"><a href="../welcome.html"
-							th:href="@{/}"><i class="icon-home"></i>Home</a></li>
-						<li style="width: 130px;"><a href="../owners/findOwners.html"
-							th:href="@{/owners/find.html}"><i class="icon-search"></i>Find
-								owners</a></li>
-						<li style="width: 140px;"><a href="../vets/vetList.html"
-							th:href="@{/vets.html}"><i class="icon-th-list"></i>Veterinarians</a></li>
-						<li style="width: 90px;"><a href="../exception.html"
-							th:href="@{/oups.html}"
-							title="trigger a RuntimeException to see how it is handled"><i
-								class="icon-warning-sign"></i>Error</a></li>
-						<li style="width: 80px;"><a href="#"
-							title="not available yet. Work in progress!!"><i
-								class=" icon-question-sign"></i>Help</a></li>
-					</ul>
-				</div>
-			</div> -->
-
-
-
 		<form th:object="${user}"
-			th:method="post"
-			action="/user/new"
+			action="/owners/saveAccount"
 			th:action="@{${#httpServletRequest.servletPath}}"
+			method="post"
 			class="form-horizontal" id="add-owner-form">
 			<div class="control-group"
-				th:classappend="${#fields.hasErrors('firstName')} ? 'error' : ''">
+				th:classappend="${#fields.hasErrors('firstname')} ? 'error' : ''">
 				<label class="control-label">First Name</label>
 				<div class="controls">
-					<input type="text" th:field="*{firstName}" /> <span
-						class="help-inline" th:errors="*{firstName}">[error]</span>
+					<input type="text" th:field="*{firstname}" /> <span
+						class="help-inline" th:errors="*{firstname}">[error]</span>
 				</div>
 			</div>
 
 			<div class="control-group"
-				th:classappend="${#fields.hasErrors('lastName')} ? 'error' : ''">
+				th:classappend="${#fields.hasErrors('lastname')} ? 'error' : ''">
 				<label class="control-label">Last Name</label>
 				<div class="controls">
-					<input type="text" th:field="*{lastName}" /> <span
-						class="help-inline" th:errors="*{lastName}">[error]</span>
+					<input type="text" th:field="*{lastname}" /> <span
+						class="help-inline" th:errors="*{lastname}">[error]</span>
 				</div>
 			</div>
 
@@ -120,18 +94,18 @@
 
 			<div class="form-actions">
 				<!-- <button th:if="${owner['new']}" type="submit">Create Account</button> -->
-				<a th:href="@{${owner.lastName} + '/owners/index.html'}" href="../owners/index.html"  class="btn btn-success">Create Account</a></td>
+				 <button type="submit">Create Account</button>
 				<!-- <button th:unless="${owner['new']}" type="submit">Update
 					Owner</button> -->
 			</div>
 		</form>
 
-		<table th:substituteby="fragments/footer :: footer" class="footer">
+		<table th:fragment="footer" class="footer">
 			<tr>
 				<td></td>
 				<td align="right">
 					<p class="powered-text">
-						Copyright <a href="#"> V-Fashion</a> 2013 designed by Summer corp</a>
+						Copyright <a href="#"> V-Fashion</a> 2013 designed by Summer corp
 					</p>
 				</td>
 			</tr>

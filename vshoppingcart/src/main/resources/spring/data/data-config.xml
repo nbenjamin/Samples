@@ -3,6 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:lang="http://www.springframework.org/schema/lang"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -12,10 +14,29 @@
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.2.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 		
 <!-- Scan the controller -->
-	<context:component-scan base-package="com.summer.vshoppingcart.web.controller" />
+	<context:component-scan base-package="com.summer.vshoppingcart" />
+	
+	<mongo:db-factory id="mongoDbFactory" dbname="vFashion-store" />
+
+	<mongo:mapping-converter id="mongoConverter"
+		base-package="org.springframework.samples.petclinic.model">
+		<mongo:custom-converters base-package="org.springframework.samples.petclinic.model" />
+	</mongo:mapping-converter>
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+		<constructor-arg ref="mongoConverter" />
+		<property name="writeConcern" value="SAFE" />
+	</bean>
+
+	<mongo:repositories base-package="com.summer.vshoppingcart.repository" />
+	
+	<!-- <jpa:repositories base-package="com.summer.vshoppingcart.repository.data"/> -->
 
 
 </beans>
