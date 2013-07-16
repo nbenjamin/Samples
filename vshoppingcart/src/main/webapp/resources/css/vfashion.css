@@ -18,7 +18,6 @@ input[type="text"] {
 
 .banner {
 	height: 110px;
-	/*background-image: url(http://www.ogmda.com/test/img/banner2.png);*/
 	background-image: url('../images/shoppingcart_banner.jpg');
 	background-repeat: repeat-x;
 }
