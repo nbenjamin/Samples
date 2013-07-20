@@ -1,17 +1,32 @@
 package com.summer.vshoppingcart.domain;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class Product {
+import org.springframework.data.annotation.Transient;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+public class Product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String description;
 	private String brand;
 	private String color;
 	private String size;
-	private byte[] image;
+	@Transient
+	private CommonsMultipartFile image;
+	private byte[] image1;
+	private String imageGfs;
 	private BigInteger price;
 	private BigInteger quantity;
+	
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public String getName() {
 		return name;
@@ -25,12 +40,7 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public byte[] getImage() {
-		return image;
-	}
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
+
 	public BigInteger getPrice() {
 		return price;
 	}
@@ -61,5 +71,26 @@ public class Product {
 	public void setSize(String size) {
 		this.size = size;
 	}
+	public CommonsMultipartFile  getImage() {
+		return image;
+	}
+	public void setImage(CommonsMultipartFile  image) {
+		this.image = image;
+	}
+	public String getImageGfs() {
+		return imageGfs;
+	}
+	public void setImageGfs(String imageGfs) {
+		this.imageGfs = imageGfs;
+	}
+
+	public byte[] getImage1() {
+		return image1;
+	}
+
+	public void setImage1(byte[] image1) {
+		this.image1 = image1;
+	}
+
 	
 }

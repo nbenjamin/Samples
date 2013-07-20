@@ -6,28 +6,34 @@
 
 
 <head th:substituteby="fragments/headTag :: headTag">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>v-Fashion</title>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>V-Fashion</title>
 
 <link
 	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
 	rel="stylesheet" />
-<link href="../../../resources/css/vFashion.css"
-	th:href="@{/resources/css/vFashion.css}" rel="stylesheet" />
-
+<link href="../../../resources/css/vfashion.css"
+	th:href="@{/resources/css/vfashion.css}" rel="stylesheet" />
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/bootstrap.css"
+	th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+<link href="../../../resources/css/bootstrap-responsive.css"
+	th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
 	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
 	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
-
 <link
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
 	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
 	rel="stylesheet"></link>
-
 </head>
 
 <body>
@@ -43,7 +49,7 @@
 
 		<form th:object="${product}" action="/products/addnew"
 			th:action="@{${#httpServletRequest.servletPath}}" method="post"
-			class="form-horizontal" id="add-owner-form">
+			class="form-horizontal" id="add-owner-form" enctype="multipart/form-data">
 			<div class="control-group"
 				th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
 				<label class="control-label">Name</label>

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:cache="http://www.springframework.org/schema/cache"
-	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:lang="http://www.springframework.org/schema/lang"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
@@ -17,25 +14,26 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
-		
-<!-- Scan the controller -->
-	<context:component-scan base-package="com.summer.vshoppingcart" />
-	
-	<mongo:db-factory id="mongoDbFactory" dbname="vFashion-store" />
 
-	<mongo:mapping-converter id="mongoConverter"
-		base-package="org.springframework.samples.petclinic.model">
-		<mongo:custom-converters base-package="org.springframework.samples.petclinic.model" />
-	</mongo:mapping-converter>
+	<!-- Scan the controller -->
+	<context:component-scan base-package="com.summer.vshoppingcart" />
+
+	<mongo:db-factory id="mongoDbFactory" dbname="vFashion-store" />
+	<mongo:mapping-converter id="converter" />
+	<bean id="gridfsDb" factory-bean="mongoTemplate" factory-method="getDb" />
+
+	<bean class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+		<constructor-arg ref="converter" />
+	</bean>
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongoDbFactory" />
-		<constructor-arg ref="mongoConverter" />
 		<property name="writeConcern" value="SAFE" />
 	</bean>
 
 	<mongo:repositories base-package="com.summer.vshoppingcart.repository" />
-	
+
 	<!-- <jpa:repositories base-package="com.summer.vshoppingcart.repository.data"/> -->
 
 

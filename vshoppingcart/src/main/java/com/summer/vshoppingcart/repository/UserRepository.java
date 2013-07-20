@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.summer.vshoppingcart.domain.User;
 
@@ -16,5 +15,6 @@ public interface UserRepository {
 	User findById(int id) throws DataAccessException;
 
 	void save(User user) throws DataAccessException;
+	
 
 }

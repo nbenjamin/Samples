@@ -47,64 +47,24 @@
 			</div>
 		</div>
 
-		<form th:object="${user}"
-			action="/owners/saveAccount"
-			th:action="@{${#httpServletRequest.servletPath}}"
-			method="post"
-			class="form-horizontal" id="add-owner-form">
-			<div class="control-group"
-				th:classappend="${#fields.hasErrors('firstname')} ? 'error' : ''">
-				<label class="control-label">First Name</label>
-				<div class="controls">
-					<input type="text" th:field="*{firstname}" /> <span
-						class="help-inline" th:errors="*{firstname}">[error]</span>
-				</div>
-			</div>
+		<form th:object="${product}" action="/products/addnew"
+			th:action="@{${#httpServletRequest.servletPath}}" method="post"
+			class="form-horizontal" id="add-owner-form"
+			enctype="multipart/form-data">
 
-			<div class="control-group"
-				th:classappend="${#fields.hasErrors('lastname')} ? 'error' : ''">
-				<label class="control-label">Last Name</label>
-				<div class="controls">
-					<input type="text" th:field="*{lastname}" /> <span
-						class="help-inline" th:errors="*{lastname}">[error]</span>
-				</div>
-			</div>
-
-			<div class="control-group"
-				th:classappend="${#fields.hasErrors('username')} ? 'error' : ''">
-				<label class="control-label">Username</label>
-				<div class="controls">
-					<input type="text" th:field="*{username}" /> <span class="help-inline"
-						th:errors="*{username}">[error]</span>
-				</div>
-			</div>
-			
-			<div class="control-group"
-				th:classappend="${#fields.hasErrors('password')} ? 'error' : ''">
-				<label class="control-label">Password</label>
-				<div class="controls">
-					<input type="text" th:field="*{password}" /> <span
-						class="help-inline" th:errors="*{password}">[error]</span>
-				</div>
-			</div>
-
-
-
-			<div class="control-group"
-				th:classappend="${#fields.hasErrors('email')} ? 'error' : ''">
-				<label class="control-label">Email</label>
-				<div class="controls">
-					<input type="text" th:field="*{email}" /> <span
-						class="help-inline" th:errors="*{email}">[error]</span>
-				</div>
-			</div>
-
+			<h4>
+				<span>Successfully added new products in to V-Fashion Catalog</span>
+			</h4>
 			<div class="form-actions">
-				<!-- <button th:if="${owner['new']}" type="submit">Create Account</button> -->
-				 <button type="submit">Create Account</button>
-				<!-- <button th:unless="${owner['new']}" type="submit">Update
-					Owner</button> -->
+				<a href="../owners/index.html" th:href="@{/owners/index.html}">Home</a>
+				<div></div>
+				<a href="../products/AddProducts.html"
+					th:href="@{/products/addnew.html}"> Add More Products</a>
+				<div></div>
+				<a href="../products/ListProducts.html"
+					th:href="@{/products/ListProducts.html}"> View Products</a>
 			</div>
+
 		</form>
 
 		<table th:fragment="footer" class="footer">
