@@ -26,6 +26,12 @@
 
 	<!-- Thymeleaf integration -->
 
+	<!-- Standard Spring MessageSource implementation -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="Messages" />
+	</bean>
+
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="prefix" value="/WEB-INF/thymeleaf/" />

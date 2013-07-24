@@ -1,6 +1,8 @@
 package com.summer.vshoppingcart.repository.data;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,41 @@ public class ImageRespositoryImpl {
 	}
 
 	public GridFSDBFile get(String id) {
-		GridFSDBFile gridFSDBFile = gridFsOperations.findOne(new Query(Criteria.where("_id").is(new ObjectId(id))));
+		GridFSDBFile gridFSDBFile = gridFsOperations.findOne(new Query(Criteria
+				.where("_id").is(new ObjectId(id))));
 		return gridFSDBFile;
 	}
 
+	public byte[] findOne(String id) {
+		InputStream is;
+		ByteArrayOutputStream bais;
+	
+		GridFSDBFile dbFile= get(id);
+		is = dbFile.getInputStream();
+		bais = new ByteArrayOutputStream();
+		byte bytes[] =new byte[(int) dbFile.getLength()];
+		int count = -1;
+        try {
+			while((count = is.read(bytes)) != -1) {  
+			    bais.write(bytes, 0, count); 
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			bais.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			is.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return bais.toByteArray();
+	}
 }

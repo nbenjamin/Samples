@@ -19,7 +19,9 @@
 	<context:component-scan base-package="com.summer.vshoppingcart" />
 
 	<mongo:db-factory id="mongoDbFactory" dbname="vFashion-store" />
-	<mongo:mapping-converter id="converter" />
+	<mongo:mapping-converter id="converter"
+		base-package="com.summer.vshoppingcart.domain">
+	</mongo:mapping-converter>
 	<bean id="gridfsDb" factory-bean="mongoTemplate" factory-method="getDb" />
 
 	<bean class="org.springframework.data.mongodb.gridfs.GridFsTemplate">

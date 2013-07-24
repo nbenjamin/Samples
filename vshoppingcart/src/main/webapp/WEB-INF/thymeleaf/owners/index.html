@@ -37,15 +37,18 @@
 </head>
 <body>
 	<div class="container header">
-		<div class="banner"></div>
-		<div class="row">
-			<!-- <div class="span5">
-				<div id="search">
-					<input type="text" placeholder="Search" name="filter_name" />
-					<div class="button-search"></div>
-				</div>
+		<div th:include="fragments/bodyHeader" th:remove="tag">
 
-			</div> -->
+
+			<div class="banner"></div>
+
+			<div class="navbar">
+				<div class="navbar-inner">
+					<h1>V-Fashion</h1>
+				</div>
+			</div>
+
+
 		</div>
 
 		<div class="container menu">
@@ -58,12 +61,13 @@
 								<li><a href="checkout.html">Checkout</a></li>
 								<li><a href="about.html">About Us</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<li><a href="../products/AddProducts.html" th:href="@{/products/addnew.html}">Add Products</a></li>
+								<li><a href="../products/AddProducts.html"
+									th:href="@{/products/addnew.html}">Add Products</a></li>
 							</ul>
-							 <div id="search">
+							<div id="search">
 								<input type="text" placeholder="Search" name="filter_name" />
 								<div class="button-search"></div>
-							 </div> 
+							</div>
 						</div>
 						<!-- /navbar-inner -->
 
@@ -97,9 +101,10 @@
 					<div class="product">
 						<div class="product_sale">Sale</div>
 						<a href="../owners/product.html" th:href="@{/owners/product.html}">
-						<img alt="dress1home"
+							<img alt="dress1home"
 							src="../../../resources/products/dress1home.jpg"
-							th:src="@{/resources/products/dress1home.jpg}" /></a>
+							th:src="@{/resources/products/dress1home.jpg}" />
+						</a>
 						<div class="name">
 							<a href="#">Elegant Dress</a>
 						</div>
@@ -110,8 +115,8 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dres2"
-							src="../../../resources/products/dress5home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dres2" src="../../../resources/products/dress5home.jpg"
 							th:src="@{/resources/products/dress5home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Lace Dress</a>
@@ -125,8 +130,8 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress3"
-							src="../../../resources/products/dress6home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress3" src="../../../resources/products/dress6home.jpg"
 							th:src="@{/resources/products/dress6home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Floral Dress</a>
@@ -138,8 +143,8 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress4"
-							src="../../../resources/products/dress2home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress4" src="../../../resources/products/dress2home.jpg"
 							th:src="@{/resources/products/dress2home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Black Dress</a>
@@ -163,8 +168,8 @@
 				<div class="span3">
 					<div class="product">
 						<div class="product_sale">Sale</div>
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress5"
-							src="../../../resources/products/dress3home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress5" src="../../../resources/products/dress3home.jpg"
 							th:src="@{/resources/products/dress3home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Midi Dress</a>
@@ -177,8 +182,8 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress6"
-							src="../../../resources/products/dress4home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress6" src="../../../resources/products/dress4home.jpg"
 							th:src="@{/resources/products/dress4home.jpg}" /></a>
 						<div class="name">
 							<a href="#">White Dress</a>
@@ -192,8 +197,8 @@
 				<div class="span3">
 					<div class="product">
 						<div class="product_sale">Sale</div>
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress7"
-							src="../../../resources/products/dress7home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress7" src="../../../resources/products/dress7home.jpg"
 							th:src="@{/resources/products/dress7home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Red Dress</a>
@@ -206,8 +211,8 @@
 				</div>
 				<div class="span3">
 					<div class="product">
-						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img alt="dress8"
-							src="../../../resources/products/dress8home.jpg"
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress8" src="../../../resources/products/dress8home.jpg"
 							th:src="@{/resources/products/dress8home.jpg}" /></a>
 						<div class="name">
 							<a href="#">Evening Dress</a>

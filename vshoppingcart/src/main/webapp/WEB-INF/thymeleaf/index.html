@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+<head th:substituteby="fragments/headTag :: headTag">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>V-Fashion</title>
+
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="/../../resources/css/vfashion.css"
+	th:href="@{/resources/css/vfashion.css}" rel="stylesheet" />
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="/../../resources/css/bootstrap.css"
+	th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+<link href="/../../resources/css/bootstrap-responsive.css"
+	th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
+	rel="stylesheet"></link>
+</head>
+<body>
+	<div class="container header">
+		<div th:include="fragments/bodyHeader" th:remove="tag">
+			<div class="banner"></div>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<h1>V-Fashion</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="container menu">
+			<div class="row">
+				<div class="span12">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<ul class="nav">
+								<li><a href="account.html">My Account</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../products/AddProducts.html"
+									th:href="@{/products/addnew.html}">Add Products</a></li>
+							</ul>
+							<div id="search">
+								<input type="text" placeholder="Search" name="filter_name" />
+								<div class="button-search"></div>
+							</div>
+						</div>
+						<!-- /navbar-inner -->
+
+					</div>
+					<!-- /navbar -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+		</div>
+
+		<div class="container">
+			<table>
+				<thead>
+
+					<tr th:each="latest : ${latestProducts}"  class="row">
+						<td th:each="productone : ${latest.value}">
+							<div class="product">
+								<div class="product_sale">Sale</div>
+								<a href="products/product.html"
+									th:href="@{'/products/view/'+${productone.id}}"> <img
+									src="../../resources/products/dress4home.jpg"
+									th:src="*{'data:image/jpeg;base64,'+productone.image64}" width="100%" alt="Banner 1" />
+								</a>
+								<div class="name">
+									<a href="#" th:href="${productone.name}"
+										th:text="${productone.name}">[Product Name]</a>
+								</div>
+								<div class="price">
+									<p th:text="${productone.price}">[$200.00]</p>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+
+				</thead>
+			</table>
+		</div>
+
+		<div class="footer container">
+			<div class="row">
+				<div class="span2 offset1">
+					<div>
+						<h3>Information</h3>
+						<ul>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="#">Delivery Information</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms and Conditions</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="span2">
+					<div>
+						<h3>My Account</h3>
+						<ul>
+							<li><a href="account.html">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="forgot-password.html">Lost Password</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</body>
+</html>

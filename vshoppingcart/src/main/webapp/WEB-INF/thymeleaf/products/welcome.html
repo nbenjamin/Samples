@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+
+<head th:substituteby="fragments/headTag :: headTag">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>V-Fashion</title>
+
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/vfashion.css"
+	th:href="@{/resources/css/vfashion.css}" rel="stylesheet" />
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link href="../../../resources/css/bootstrap.css"
+	th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+<link href="../../../resources/css/bootstrap-responsive.css"
+	th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
+	th:src="@{/webjars/jquery/1.9.0/jquery.js}"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"
+	th:src="@{/webjars/jquery-ui/1.9.2/js/jquery-ui-1.9.2.custom.js}"></script>
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/smoothness/jquery-ui.css"
+	th:href="@{/webjars/jquery-ui/1.9.2/css/smoothness/jquery-ui-1.9.2.custom.css}"
+	rel="stylesheet"></link>
+</head>
+<body>
+	<div class="container header">
+		<div class="banner"></div>
+		<div class="row">
+			<!-- <div class="span5">
+				<div id="search">
+					<input type="text" placeholder="Search" name="filter_name" />
+					<div class="button-search"></div>
+				</div>
+
+			</div> -->
+		</div>
+
+		<div class="container menu">
+			<div class="row">
+				<div class="span12">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<ul class="nav">
+								<li><a href="account.html">My Account</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../products/AddProducts.html"
+									th:href="@{/products/addnew.html}">Add Products</a></li>
+							</ul>
+							<div id="search">
+								<input type="text" placeholder="Search" name="filter_name" />
+								<div class="button-search"></div>
+							</div>
+						</div>
+						<!-- /navbar-inner -->
+
+					</div>
+					<!-- /navbar -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+		</div>
+
+		<div class="container">
+			<!-- <div class="row">
+				<div class="span12">
+					<a href="#"> <img src="../../../resources/image/MainPage.jpg"
+						th:src="@{/resources/image/MainPage.jpg}" width="100%"
+						alt="Banner 1" />
+					</a>
+				</div>
+			</div> -->
+
+			<div class="row">
+				<div class="span12">
+					<h2>Featured</h2>
+				</div>
+
+			</div>
+			<table class="table table-striped">
+				<thead>
+
+					<tr th:each="product : ${products}" th:remove="all">
+						<div class="row">
+							<div class="span3">
+								<div class="product">
+									<div class="product_sale">Sale</div>
+									<a href="../owners/product.html"
+										th:href="@{/owners/product.html}"> <img
+										src="../../../resources/products/dress1home.jpg" th:src="${product.imagepath}"
+										width="100%" alt="Banner 1" />
+									</a>
+									<div class="name">
+										<a href="#" th:href="${product.name}">Elegant Dress</a>
+									</div>
+									<div class="price">
+										<p>$200.00</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</tr>
+
+				</thead>
+			</table>
+			<!-- <div class="row">
+				<div class="span3">
+					<div class="product">
+						<div class="product_sale">Sale</div>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}">
+							<img alt="dress1home"
+							src="../../../resources/products/dress1home.jpg"
+							th:src="@{/resources/products/dress1home.jpg}" />
+						</a>
+						<div class="name">
+							<a href="#">Elegant Dress</a>
+						</div>
+						<div class="price">
+							<p>$200.00</p>
+						</div>
+					</div>
+				</div>
+				<div class="span3">
+					<div class="product">
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dres2" src="../../../resources/products/dress5home.jpg"
+							th:src="@{/resources/products/dress5home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Lace Dress</a>
+						</div>
+						<div class="price">
+							<p>$250.00</p>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="span3">
+					<div class="product">
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress3" src="../../../resources/products/dress6home.jpg"
+							th:src="@{/resources/products/dress6home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Floral Dress</a>
+						</div>
+						<div class="price">
+							<p>$500.00</p>
+						</div>
+					</div>
+				</div>
+				<div class="span3">
+					<div class="product">
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress4" src="../../../resources/products/dress2home.jpg"
+							th:src="@{/resources/products/dress2home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Black Dress</a>
+						</div>
+						<div class="price">
+							<p>$150.00</p>
+						</div>
+
+					</div>
+				</div>
+
+			</div> -->
+
+			<div class="row">
+				<div class="span12">
+					<h2>Latest</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span3">
+					<div class="product">
+						<div class="product_sale">Sale</div>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress5" src="../../../resources/products/dress3home.jpg"
+							th:src="@{/resources/products/dress3home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Midi Dress</a>
+						</div>
+						<div class="price">
+							<p>$50.00</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="span3">
+					<div class="product">
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress6" src="../../../resources/products/dress4home.jpg"
+							th:src="@{/resources/products/dress4home.jpg}" /></a>
+						<div class="name">
+							<a href="#">White Dress</a>
+						</div>
+						<div class="price">
+							<p>$120.00</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="span3">
+					<div class="product">
+						<div class="product_sale">Sale</div>
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress7" src="../../../resources/products/dress7home.jpg"
+							th:src="@{/resources/products/dress7home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Red Dress</a>
+						</div>
+						<div class="price">
+							<p>$20.00</p>
+						</div>
+
+					</div>
+				</div>
+				<div class="span3">
+					<div class="product">
+						<a href="../owners/product.html" th:href="@{/owners/product.html}"><img
+							alt="dress8" src="../../../resources/products/dress8home.jpg"
+							th:src="@{/resources/products/dress8home.jpg}" /></a>
+						<div class="name">
+							<a href="#">Evening Dress</a>
+						</div>
+						<div class="price">
+							<p>$670.00</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="footer container">
+			<div class="row">
+				<div class="span2 offset1">
+					<div>
+						<h3>Information</h3>
+						<ul>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="#">Delivery Information</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms and Conditions</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="span2">
+					<div>
+						<h3>My Account</h3>
+						<ul>
+							<li><a href="account.html">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="forgot-password.html">Lost Password</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</body>
+</html>

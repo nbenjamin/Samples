@@ -15,6 +15,7 @@ import com.summer.vshoppingcart.service.impl.vscServiceException;
 @RequestMapping("/")
 public class LoginController {
 
+
 	@Autowired
 	UserService userService;
 
@@ -33,12 +34,6 @@ public class LoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/owners/index";
-	}
-
-	@RequestMapping(value = "/owners/index", method = RequestMethod.GET)
-	public String saveAccount(User user, BindingResult result, Model model) {
-		System.out.println(user);
 		return "/owners/index";
 	}
 }

@@ -46,10 +46,39 @@
 				</div>
 			</div>
 		</div>
+		
+				<div class="container menu">
+			<div class="row">
+				<div class="span12">
+					<div class="navbar">
+						<div class="navbar-inner">
+							<ul class="nav">
+								<li><a href="account.html">My Account</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../products/AddProducts.html"
+									th:href="@{/products/addnew.html}">Add Products</a></li>
+							</ul>
+							<div id="search">
+								<input type="text" placeholder="Search" name="filter_name" />
+								<div class="button-search"></div>
+							</div>
+						</div>
+						<!-- /navbar-inner -->
 
-		<form th:object="${product}" action="/products/addnew"
-			th:action="@{${#httpServletRequest.servletPath}}" method="post"
-			class="form-horizontal" id="add-owner-form" enctype="multipart/form-data">
+					</div>
+					<!-- /navbar -->
+				</div>
+				<!-- /span -->
+			</div>
+			<!-- /row -->
+		</div>
+		<div class="row"></div>
+
+		<form th:object="${product}" action="#"
+			th:action="@{/products/addnew}" method="post" class="form-horizontal"
+			id="add-owner-form" enctype="multipart/form-data">
 			<div class="control-group"
 				th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
 				<label class="control-label">Name</label>
@@ -65,6 +94,17 @@
 				<div class="controls">
 					<textarea cols="40" rows="4" th:field="*{description}"></textarea>
 					<span class="help-inline" th:errors="*{description}">[error]</span>
+				</div>
+			</div>
+
+			<div class="control-group"
+				th:classappend="${#fields.hasErrors('type')} ? 'error' : ''">
+				<label for="type">Type</label>
+				<div class="controls">
+					<select th:field="*{type}">
+						<option th:each="type : ${allTypes}" th:value="${type}"
+							th:text="#{${'product.type.' + type}}">Dress</option>
+					</select>
 				</div>
 			</div>
 
