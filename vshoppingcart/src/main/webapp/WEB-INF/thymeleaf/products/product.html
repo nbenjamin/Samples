@@ -16,6 +16,10 @@
 	rel="stylesheet" />
 <link href="../../../resources/css/vfashion.css"
 	th:href="@{/resources/css/vfashion.css}" rel="stylesheet" />
+<link href="../../../resources/css/style.css"
+	th:href="@{/resources/css/style.css}" rel="stylesheet" />
+<link href="../../../resources/css/carousel.css" rel="stylesheet"
+	th:href="@{/resources/css/carousel.css}" type="text/css" />
 <link
 	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.min.css"
 	th:href="@{/webjars/bootstrap/2.3.0/css/bootstrap.min.css}"
@@ -52,7 +56,7 @@
 				</div>
 				<div class="span5">
 					<div id="search">
-						<input type="text" placeholder="Search" name="filter_name"/>
+						<input type="text" placeholder="Search" name="filter_name" />
 						<div class="button-search"></div>
 					</div>
 					<div class="cart dropdown">
@@ -68,21 +72,21 @@
 								<tbody>
 									<tr>
 										<td class="image"><img alt="IMAGE"
-											src="products/dress33.jpg"/></td>
+											src="products/dress33.jpg" /></td>
 										<td class="name"><a href="product.html">Black Dress</a></td>
 										<td class="quantity">x&nbsp;3</td>
 										<td class="total">$130.00</td>
 										<td class="remove"><img src="image/remove-small.png"
-											alt="Remove" title="Remove"/></td>
+											alt="Remove" title="Remove" /></td>
 									</tr>
 									<tr>
 										<td class="image"><img alt="IMAGE"
-											src="products/dress11.jpg"/></td>
+											src="products/dress11.jpg" /></td>
 										<td class="name"><a href="product.html">Blue Dress</a></td>
 										<td class="quantity">x&nbsp;3</td>
 										<td class="total">$230.00</td>
 										<td class="remove"><img src="image/remove-small.png"
-											alt="Remove" title="Remove"/></td>
+											alt="Remove" title="Remove" /></td>
 									</tr>
 								</tbody>
 							</table>
@@ -133,20 +137,25 @@
 		</div>
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="../index.html" th:href="@{/index}">Home</a> <span class="divider">/</span></li>
+				<li><a href="../index.html" th:href="@{/index}">Home</a> <span
+					class="divider">/</span></li>
 				<li class="active">Product</li>
 			</ul>
+			<form class="form-inline" th:object="${product}"
+				action="../order/cart.html" th:action="@{/order/add}" method="post"
+				enctype="multipart/form-data">
+				<div class="row product-info">
 
-			<div class="row product-info">
-				<div class="span6">
+					<div class="span6">
 
-					<div class="image">
-						<a class="cloud-zoom" rel="adjustX: 0, adjustY:0" id='zoom1'
-							href="products/dress1.jpg" title="Nano">
-							<img src="../../../resources/products/dress1.jpg"
-							th:src="*{'data:image/jpeg;base64,'+productdetails.image64}" title="Nano" alt="Nano" id="image" /></a>
-					</div>
-					<!-- <div class="image-additional">
+						<div class="image">
+							<a class="cloud-zoom" rel="adjustX: 0, adjustY:0" id='zoom1'
+								href="products/dress1.jpg" title="Nano"> <img
+								src="../../../resources/products/dress1.jpg"
+								th:src="${'data:image/jpeg;base64,'+product.image64}" title="Nano"
+								alt="Nano" id="image" /></a>
+						</div>
+						<!-- <div class="image-additional">
 						<a title="Dress"
 							rel="useZoom: 'zoom1', smallImage: 'products/dress6.jpg'"
 							class="cloud-zoom-gallery" href="products/dress6.jpg">
@@ -169,113 +178,120 @@
 							<img alt="Dress" title="Dress" src="../../../resources/products/dress1.jpg"
 							th:src="@{/resources/products/dress1.jpg}" /></a>
 					</div> -->
-				</div>
-				<div class="span6">
-					<h1>Blue Dress</h1>
-					<div class="line"></div>
-					<ul>
-						<li><span>Brand:</span> <a href="#" th:text="${productdetails.brand}">Shop Online</a></li>
-						<li><span>Product Code:</span>  <label for="code" th:text="${productdetails.id}">Product 001</label></li>
-						<li><span>Availability: </span><label for="stock" th:text="${productdetails.quantity}">In Stock</label></li>
-					</ul>
-					<div class="price">
-						Price <span class="strike">$150.00</span> <strong th:text="${productdetails.price}">$125.00</strong>
 					</div>
-					<span class="price-tax">Ex Tax: $400.00</span>
-					<div class="control-group">
-						<label class="control-label">Color<span class="required">*</span></label>
-						<div class="controls">
-							<select>
-								<option>Please Select...</option>
-								<option>Blue</option>
-								<option>Red</option>
-								<option>Black</option>
-							</select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Size<span class="required">*</span></label>
-						<div class="controls">
-							<select>
-								<option>Please Select...</option>
-								<option>XXS</option>
-								<option>XS</option>
-								<option>S</option>
-							</select>
-						</div>
-					</div>
-					<div class="line"></div>
-					<form class="form-inline">
-						<b>Qty:</b> <input type="text" placeholder="1" class="span1" />
-
-						<button class="btn btn-primary" type="button">Add to Cart</button>
-					</form>
-					<div class="tabs">
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#home">Description</a></li>
-							<li><a href="#profile">Specification</a></li>
-							<li><a href="#messages">Reviews</a></li>
+					<div class="span6">
+						<h1>Blue Dress</h1>
+						<div class="line"></div>
+						<ul>
+							<li><span>Brand:</span> <a href="#" th:text="${product.brand}">Shop
+									Online</a></li>
+							<li><span>Product Code:</span> <label for="code" th:value="*{id}"
+								th:text="${product.id}">Product 001</label></li>
+							<li><span>Availability: </span><label for="stock"
+								th:text="${product.quantity}" >In Stock</label></li>
 						</ul>
-						<div class="tab-content">
-							<div class="tab-pane active" id="home">When she reached the
-								first hills of the Italic Mountains, she had a last view back on
-								the skyline of her hometown Bookmarksgrove, the headline of
-								Alphabet Village and the subline of her own road, the Line Lane.
-								Pityful a rethoric question ran over her cheek, then</div>
-							<div class="tab-pane" id="profile">
-								<table class="table specs">
-									<tr>
-										<th>Color</th>
-										<th>Size</th>
-										<th>Weight</th>
-									</tr>
-									<tr>
-										<td>Blue</td>
-										<td>XS</td>
-										<td>1.00</td>
-									</tr>
-									<tr>
-										<th>Composition</th>
-										<th>Sleeve</th>
-										<th>Care</th>
-									</tr>
-									<tr>
-										<td>100% Cotton</td>
-										<td>Long Sleeve</td>
-										<td>IRON AT 110ºC MAX</td>
-									</tr>
-								</table>
+						<div class="price">
+							Price <span class="strike">$150.00</span> <strong
+								th:text="${product.price}">$125.00</strong>
+						</div>
+						<span class="price-tax">Ex Tax: $400.00</span>
+						<div class="control-group">
+							<label class="control-label">Color<span class="required">*</span></label>
+							<div class="controls">
+								<select>
+									<option>Please Select...</option>
+									<option>Blue</option>
+									<option>Red</option>
+									<option>Black</option>
+								</select>
 							</div>
-							<div class="tab-pane" id="messages">
-								<p>
-									There are no reviews yet, would you like to <a
-										href="#review_btn">submit yours?</a>
-								</p>
-								<h3>Be the first to review “Blue Dress”</h3>
-								<form>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Size<span class="required">*</span></label>
+							<div class="controls">
+								<select>
+									<option>Please Select...</option>
+									<option>XXS</option>
+									<option>XS</option>
+									<option>S</option>
+								</select>
+							</div>
+						</div>
+						<div class="line"></div>
+						<!-- <form class="form-inline"> -->
+						<b>Qty:</b> <input type="text" placeholder="1" class="span1" />
+						<div class="form-actions">
+							<button class="btn btn-primary" type="submit">Add to
+								Cart</button>
+							<a class="btn btn-primary" href="../order/cart.html"
+									th:href="@{'/order/add/'+${product.id}+'/'+${product.quantity}}">Add to
+								Cart</a>
+						</div>
+						<!-- </form> -->
+						<div class="tabs">
+							<ul class="nav nav-tabs" id="myTab">
+								<li class="active"><a href="#home">Description</a></li>
+								<li><a href="#profile">Specification</a></li>
+								<li><a href="#messages">Reviews</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="home"><span th:text="*{description}">When she reached
+									the first hills of the Italic Mountains, she had a last view
+									back on the skyline of her hometown Bookmarksgrove, the
+									headline of Alphabet Village and the subline of her own road,
+									the Line Lane. Pityful a rethoric question ran over her cheek,
+									then</span></div>
+								<div class="tab-pane" id="profile">
+									<table class="table specs">
+										<tr>
+											<th>Color</th>
+											<th>Size</th>
+											<th>Weight</th>
+										</tr>
+										<tr>
+											<td>Blue</td>
+											<td>XS</td>
+											<td>1.00</td>
+										</tr>
+										<tr>
+											<th>Composition</th>
+											<th>Sleeve</th>
+											<th>Care</th>
+										</tr>
+										<tr>
+											<td>100% Cotton</td>
+											<td>Long Sleeve</td>
+											<td>IRON AT 110ºC MAX</td>
+										</tr>
+									</table>
+								</div>
+								<div class="tab-pane" id="messages">
+									<p>
+										There are no reviews yet, would you like to <a
+											href="#review_btn">submit yours?</a>
+									</p>
+									<h3>Be the first to review “Blue Dress”</h3>
+									<!-- <form> -->
 									<fieldset>
-										<label>Name<span class="required">*</span></label> 
-										<input
-											type="text" placeholder="Name"/> 
-										<label>Email<span
-											class="required">*</span></label> 
-										<input type="text"
-											placeholder="Email"/> 
-										<label class="rating">Rating</label>
-										<img alt="rating" src="image/stars-5.png"/>
+										<label>Name<span class="required">*</span></label> <input
+											type="text" placeholder="Name" /> <label>Email<span
+											class="required">*</span></label> <input type="text"
+											placeholder="Email" /> <label class="rating">Rating</label>
+										<img alt="rating" src="image/stars-5.png" />
 									</fieldset>
-								</form>
-								<label>Your Review<span class="required">*</span></label>
-								<textarea rows="3"></textarea>
-								<p id="review_btn">
-									<button class="btn" type="button">Submit Review</button>
-								</p>
+									<!-- </form> -->
+									<label>Your Review<span class="required">*</span></label>
+									<textarea rows="3"></textarea>
+									<p id="review_btn">
+										<button class="btn" type="button">Submit Review</button>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
 
+				</div>
+			</form>
 
 		</div>
 
