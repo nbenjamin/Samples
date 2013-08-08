@@ -14,7 +14,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
 	<!-- Scan the controller -->
-	<context:component-scan base-package="com.summer.vshoppingcart.web.controller" />
+	<context:component-scan base-package="com.summer.vshoppingcart" />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<!-- Include webjars -->

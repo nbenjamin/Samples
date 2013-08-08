@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.security.crypto.codec.Base64;
@@ -29,10 +31,12 @@ public class Product implements Serializable {
 	private String imagepath;
 	private byte[] imageByte;
 	private String image64;
+
 	public String getImage64() {
-		String image64 = new String(Base64.encode(imageByte));
-		return image64;
+		this.image64 = new String(Base64.encode(imageByte));
+		return this.image64;
 	}
+
 	public void setImage64(String image64) {
 		this.image64 = image64;
 	}
@@ -45,6 +49,7 @@ public class Product implements Serializable {
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public BigInteger getId() {
 		return id;
 	}
@@ -52,6 +57,7 @@ public class Product implements Serializable {
 	public void setId(BigInteger id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -143,27 +149,44 @@ public class Product implements Serializable {
 	public void setType(Type type) {
 		this.type = type;
 	}
+
 	@ResponseBody
 	public byte[] getImageByte() {
 		return imageByte;
 	}
+
 	public void setImageByte(byte[] imageByte) {
 		this.imageByte = imageByte;
 	}
+
 	public void setEffectiveDate(Date effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+		if (object == null || getClass() != object.getClass()) {
+			return false;
+		}
+		Product other = (Product) object;
+
+		return new EqualsBuilder().append(this.getId(), other.getId())
+				.append(this.getName(), other.getName()).isEquals();
+	}
+
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return new HashCodeBuilder().append(getId()).append(getName())
+				.toHashCode();
 	}
 
 }

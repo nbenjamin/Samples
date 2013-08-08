@@ -45,63 +45,6 @@
 			<div class="banner"></div>
 			<div class="row"></div>
 
-			<div class="row">
-				<div class="span7"></div>
-				<div class="span5">
-					<div class="cart dropdown">
-						<img alt="cart empty"
-							src="../../../resources/image/shopping_basket.png"></img> <a
-							href="cart.html" class="dropdown-toggle" data-toggle="dropdown">2
-							items(s) - $360.00</a>
-						
-						<div class="cart-info dropdown-menu">
-							<table class="table">
-								<thead>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="image"><img alt="IMAGE"
-											src="../../../resources/products/dress33.jpg"></img></td>
-										<td class="name"><a href="product.html">Black Dress</a></td>
-										<td class="quantity">x&nbsp;3</td>
-										<td class="total">$130.00</td>
-										<td class="remove"><img
-											src="../../../resources/image/remove-small.png" alt="Remove"
-											title="Remove"></img></td>
-									</tr>
-									<tr>
-										<td class="image"><img alt="IMAGE"
-											src="../../../resources/products/dress11.jpg"></img></td>
-										<td class="name"><a href="product.html">Blue Dress</a></td>
-										<td class="quantity">x&nbsp;3</td>
-										<td class="total">$230.00</td>
-										<td class="remove"><img
-											src="../../../resources/image/remove-small.png" alt="Remove"
-											title="Remove"></img></td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="cart-total">
-								<table>
-									<tbody>
-										<tr>
-											<td><b>Sub-Total:</b></td>
-											<td>$400.00</td>
-										</tr>
-										<tr>
-											<td><b>Total:</b></td>
-											<td>$400.00</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="checkout">
-									<a href="cart.html">View Cart</a> | <a href="checkout.html">Checkout</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="container menu">
 			<div class="row">
@@ -137,7 +80,7 @@
 					<div class="breadcrumbs">
 						<ul class="breadcrumb">
 							<li><a href="../index.html" th:href="@{/index.html}">Home</a> <span class="divider">/</span></li>
-							<li class="active">Shopping Cart</li>
+							<li class="active">Order Details</li>
 						</ul>
 					</div>
 				</div>
@@ -145,82 +88,19 @@
 
 			<div class="row">
 				<div class="span12">
-					<h2>Shopping Cart</h2>
+					<h2>Order Details</h2>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="span12">
 					<div class="cart-info">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Image</th>
-									<th>Product</th>
-									<th>Model</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-								</tr>
-							</thead>
-							<tbody th:remove="all-but-first">
-								<tr th:each="entry : ${cart.productCart}">
-									<td class="image"><img alt="IMAGE"
-										src="../../../resources/products/dress33.jpg" th:src="*{'data:image/jpeg;base64,'+entry.key.image64}"></img></td>
-									<td class="name" th:text="${entry.key.name}"><a href="product.html">Black Dress</a></td>
-									<td th:text="${entry.key.brand}">Product 14</td>
-									<td th:text="${entry.key.price}">$130.00</td>
-									<td class="quantity"  th:text="${entry.value}"><input type="image" title="Update"
-										alt="Update" src="../../../resources/image/update.png"/>
-										<input type="image" title="Remove" alt="Remove"
-										src="../../../resources/image/remove.png"/></td>
-									<td class="total" th:text="${entry.key.price} * ${entry.value}">$130.00</td>
-								</tr>
-								<tr>
-									<td class="image"><img alt="IMAGE"
-										src="../../../resources/products/dress11.jpg"></img></td>
-									<td class="name"><a href="product.html">Blue Dress</a></td>
-									<td>Product 17</td>
-									<td>$230.00</td>
-									<td class="quantity"><input type="text" size="1" value="1"
-										name="quantity"/> <input type="image" title="Update"
-										alt="Update" src="../../../resources/image/update.png"/>
-										<input type="image" title="Remove" alt="Remove"
-										src="../../../resources/image/remove.png"/></td>
-									<td class="total">$230.00</td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
 
-				<div class="span12">
-					<h3>Cart Totals</h3>
-					<div class="cart-totals">
-						<table class="table">
-							<tr>
-								<th>Cart Subtotal</th>
-								<td th:text="${cart.cartSubTotal}">$360.00</td>
-							</tr>
-							<tr>
-								<th>Shipping</th>
-								<td>Free Shipping</td>
-							</tr>
-							<tr>
-								<th><span>Order Total</span></th>
-								<td th:text="${cart.cartTotal}">$360.00</td>
-							</tr>
-						</table>
-						<p>
-							<a class="btn btn-primary" href="checkout.html" th:href="@{/order/checkout}"> Proceed to
-								Checkout </a>
-						</p>
-					</div>
-
-				</div>
 
 			</div>
 

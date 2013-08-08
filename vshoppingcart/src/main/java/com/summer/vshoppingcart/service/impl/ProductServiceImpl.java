@@ -1,20 +1,17 @@
 package com.summer.vshoppingcart.service.impl;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.mongodb.gridfs.GridFSDBFile;
 import com.summer.vshoppingcart.domain.Product;
 import com.summer.vshoppingcart.domain.Type;
 import com.summer.vshoppingcart.repository.FileStorageRepository;

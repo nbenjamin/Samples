@@ -7,6 +7,7 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private String phoneNumer;
 	
 	public String getUsername() {
 		return username;
@@ -37,6 +38,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getPhoneNumer() {
+		return phoneNumer;
+	}
+	public void setPhoneNumer(String phoneNumer) {
+		this.phoneNumer = phoneNumer;
 	}
 
 }
